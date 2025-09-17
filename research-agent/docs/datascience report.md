@@ -3,29 +3,37 @@
 #### Fine-Tuning Setup
 ##### **Objective**
 The goal was to fine-tune a generative language model to produce high-quality educational QA pairs (questions, multiple-choice options, and answers) grounded in a scientific context.
+
 ##### **Data**
-* **Source:** Extracted from scientific PDFs and supplementary datasets.
-* **Format:** Each sample contained:
-    * **Context:** A paragraph or section from a scientific paper.
-    * **Question:** A generated or labeled question.
-    * **Options:** Multiple-choice answers (when available).
-    * **Answer:** Correct answer(s).
+* **Source:** A dataset of **2000 examples** loaded from `train_dataset.jsonl`.
+* **Format:** The data was formatted with a system prompt for a **scientific question generator** and a user prompt for context. A sample is shown below:
+    ```
+    <|system|>
+    You are a scientific question generator. Create clear, accurate multiple-choice questions from scientific text.
+
+    <|user|>
+    Generate a multiple-choice question from the following context.
+
+    Context: Mesophiles grow best in moderate temperature, typically between 25°C and 40°C (77°F and 104°F...
+    ```
 * **Preprocessing:**
-    * Text cleaning (punctuation fixes, sentence splitting).
-    * Context chunking (~200–300 tokens).
-    * Filtering out very short or incoherent samples.
+    * The texts were tokenized, with an average length of **201.3 tokens**.
+
 ##### **Method**
-* **Base Model:** Phi-3-mini-4k-instruct (chosen for efficiency and instruction-following ability).
-* **Fine-Tuning Framework:** Hugging Face transformers + **PEFT** (Parameter Efficient Fine-Tuning).
+* **Base Model:** **Phi-3-mini-4k-instruct**.
+* **Fine-Tuning Framework:** The pipeline used **QLoRA** for fine-tuning.
 * **Training Setup:**
-    * **Optimizer:** AdamW
-    * **Learning rate:** 5e-5
-    * **Epochs:** 3–5
-    * **Batch size:** 16
-    * **LoRA** adapters to reduce memory footprint.
+    * **Trainable parameters:** 4,456,448 (0.1165% of total).
+    * **Optimizer:** Not explicitly stated, but common for QLoRA is AdamW.
+    * **Epochs:** 1.
+    * **Batch size:** The log shows 125 steps, implying a batch size of 16 (2000 samples / 125 steps).
+* **Training Progress:**
+    * The training loss decreased over the 125 steps, from an initial value of 1.7286 to a final value of 0.9300.
+
 ##### **Results**
-* The model loaded successfully after fine-tuning.
-* Early qualitative inspection shows it can generate structured questions with options, but question quality varies (some are incomplete, truncated, or incoherent).
+* The **model loaded successfully**, with a trainable percentage of **0.1165%**.
+* The training pipeline **completed successfully**, and the adapter was saved to `./qa_adapter` with a size of **17.02 MB**.
+* The post-training test **failed** with a `'DynamicCache' object has no attribute 'seen_tokens'` error, indicating a potential issue with the testing script's compatibility with the model's caching mechanism. This error did not affect the training process itself, only the final automated test.
 * Quantitative evaluation was handled with **QAEvaluationMetrics** (see Section 2).
 ---
 #### Evaluation Methodology & Outcomes
