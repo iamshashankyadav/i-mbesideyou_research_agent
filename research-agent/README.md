@@ -65,6 +65,7 @@ Core components:
 For GitHub preview, use a YouTube-like embedded link if you have it hosted externally.
 If not, visitors can download & play the `demoandimages` file.
 ![the interface](demoandimages/first.png)
+![the interface](demoandimages/third.png)
 ---
 ## 📊 Evaluation Results
 The QA generation quality was evaluated using `QAEvaluationMetrics`.
