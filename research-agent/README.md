@@ -59,12 +59,12 @@ Core components:
 * **🌐 Semantic Scholar Integration:** Allows searching for external scientific papers.
 
 ---
-## 📹 Demo Video
+## 📹 Demo Video/images
 🎥 Watch the working demo below:
-![Demo](demoandimages/22-01-24.mp4)
+[Demo](demoandimages/22-01-24.mp4)
 For GitHub preview, use a YouTube-like embedded link if you have it hosted externally.
 If not, visitors can download & play the `demoandimages` file.
-
+![the interface](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Mississippi_River_at_Lake_Itasca_2016.JPG/800px-Mississippi_River_at_Lake_Itasca_2016.JPG)
 ---
 ## 📊 Evaluation Results
 The QA generation quality was evaluated using `QAEvaluationMetrics`.
