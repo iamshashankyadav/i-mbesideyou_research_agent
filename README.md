@@ -2,9 +2,9 @@
 ---
 
 ## 🏫 Author & Affiliation
-**Name:** Shashank Yadav
-**University:** Indian institute of technology Bhilai
-**Department:** Data science and artificial intelligence
+**Name:** Shashank Yadav <br>
+**University:** Indian institute of technology Bhilai <br>
+**Department:** Data science and artificial intelligence <br>
 This repository is part of my internship application project.
 
 ---
