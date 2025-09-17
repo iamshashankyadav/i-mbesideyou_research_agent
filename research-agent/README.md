@@ -64,7 +64,7 @@ Core components:
 ![Demo](demoandimages/22-01-24.mp4)
 For GitHub preview, use a YouTube-like embedded link if you have it hosted externally.
 If not, visitors can download & play the `demoandimages` file.
-![the interface](demoandimages/Screenshot2025-09-17220916.png)
+![the interface](demoandimages/first.png)
 ---
 ## 📊 Evaluation Results
 The QA generation quality was evaluated using `QAEvaluationMetrics`.
